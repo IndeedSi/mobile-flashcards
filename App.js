@@ -1,21 +1,35 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {createStore} from 'redux'
+import { Provider } from 'react-redux'
+import reducer from './reducers'
+import { StyleSheet, Text, View, Platform } from 'react-native';
+import CardsStatusBar from './components/CardsStatusBar';
+import { MaterialIcons, Ionicons, FontAwesome, Foundation } from '@expo/vector-icons';
+import { purple } from './utils/colors';
+import Home from './components/Home';
+import thunk from 'redux-thunk'
+import { applyMiddleware } from 'redux'
+import {setLocalNotification} from "./utils/notifications";
+
 
 export default class App extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-      </View>
-    );
-  }
+    componentDidMount() {
+        setLocalNotification();
+    }
+    render() {
+        return (
+            <Provider store={createStore(reducer, applyMiddleware(thunk))}>
+                <View style={styles.container}>
+                    <CardsStatusBar backgroundColor={purple} barStyle='light-content' />
+                    <Home />
+                </View>
+            </Provider>
+        );
+    }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    container: {
+        flex: 1,
+    },
 });

@@ -1,6 +1,7 @@
 {
   "expo": {
-    "name": "UdaiciCards",
+    "name": "UdaciCards",
+    "description": "An app to help you manage flash cards and take quiz on the cards",
     "slug": "mobile-flashcards",
     "privacy": "public",
     "sdkVersion": "32.0.0",
@@ -9,8 +10,9 @@
       "android"
     ],
     "version": "1.0.0",
+    "githubUrl": "https://github.com/IndeedSi/mobile-flashcards",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/icon.jpg",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -23,7 +25,11 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "org.udacicards.exp"
+    },
+    "android": {
+      "package": "org.udacicards.exp"
     }
   }
 }
